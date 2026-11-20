@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Haven Hotel</title>
+  <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/admin">HAVEN<span>.</span></a>
+    <p class="side-label">MANAGEMENT</p>
+    <a href="#overview">Overview</a><a href="#reservations">Reservations</a><a href="#rooms">Rooms</a><a href="#services">Services</a><a href="#payments">Payments</a><a href="#guests">Guests</a>
+    <button id="logoutButton" class="logout">Log out</button>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><p class="eyebrow">HAVEN HOTEL</p><h1>Admin Dashboard</h1></div><a href="/" target="_blank">View customer website ↗</a></header>
+    <section id="overview" class="stats">
+      <article><span>Total Rooms</span><strong id="totalRooms">—</strong></article>
+      <article><span>Total Guests</span><strong id="totalGuests">—</strong></article>
+      <article><span>Reservations</span><strong id="totalReservations">—</strong></article>
+      <article><span>Pending Payments</span><strong id="pendingPayments">—</strong></article>
+    </section>
+    <section id="reservations" class="panel">
+      <div class="panel-heading"><div><p class="eyebrow">BOOKINGS</p><h2>Reservations</h2></div><button class="refresh" data-load="reservations">Refresh</button></div>
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Guest</th><th>Room</th><th>Dates</th><th>Amount</th><th>Booking</th><th>Payment</th><th>Update</th></tr></thead><tbody id="reservationsBody"></tbody></table></div>
+    </section>
+    <section id="rooms" class="panel">
+      <div class="panel-heading"><div><p class="eyebrow">ROOM INVENTORY</p><h2>Rooms</h2></div></div>
+      <form id="roomForm" class="inline-form">
+        <input id="roomNumber" required placeholder="Room number"><input id="roomType" required placeholder="Room type"><input id="roomPrice" type="number" min="0" required placeholder="Price per night"><input id="roomCapacity" type="number" min="1" required placeholder="Capacity"><button>Add room</button>
+      </form>
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Room</th><th>Type</th><th>Price</th><th>Capacity</th><th>Status</th><th>Change status</th></tr></thead><tbody id="roomsBody"></tbody></table></div>
+    </section>
+    <section id="services" class="panel">
+      <div class="panel-heading"><div><p class="eyebrow">GUEST EXPERIENCE</p><h2>Services</h2></div></div>
+      <form id="serviceForm" class="inline-form">
+        <input id="serviceName" required placeholder="Service name"><input id="serviceDescription" placeholder="Description"><input id="servicePrice" type="number" min="0" required placeholder="Price"><button>Add service</button>
+      </form>
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Service</th><th>Description</th><th>Price</th></tr></thead><tbody id="servicesBody"></tbody></table></div>
+    </section>
+    <section id="payments" class="panel">
+      <div class="panel-heading"><div><p class="eyebrow">TRANSACTIONS</p><h2>Payments</h2></div><button class="refresh" data-load="payments">Refresh</button></div>
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Reservation</th><th>Guest</th><th>Amount</th><th>Method</th><th>Status</th><th>Update</th></tr></thead><tbody id="paymentsBody"></tbody></table></div>
+    </section>
+    <section id="guests" class="panel">
+      <div class="panel-heading"><div><p class="eyebrow">CUSTOMER RECORDS</p><h2>Guests</h2></div><button class="refresh" data-load="guests">Refresh</button></div>
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th></tr></thead><tbody id="guestsBody"></tbody></table></div>
+    </section>
+    <p id="adminMessage" aria-live="polite"></p>
+  </main>
+  <script src="/admin/admin.js"></script>
+</body>
+</html>

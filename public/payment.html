@@ -1,0 +1,830 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment | Hotel Woodland Deluxe</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+:root {
+  --green: #173d32;
+  --green-dark: #102c24;
+  --gold: #c5a66b;
+  --cream: #f8f6f0;
+  --text: #26372f;
+  --muted: #778078;
+  --border: #e7e4dc;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #f4f5f1;
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+}
+
+header {
+  background: white;
+  padding: 20px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 18px #00000008;
+}
+
+.logo {
+  color: var(--green);
+  font: 700 23px "Playfair Display", serif;
+  letter-spacing: 1px;
+}
+
+.logo span { color: var(--gold); }
+
+.header-note {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+main {
+  max-width: 1080px;
+  margin: 45px auto;
+  padding: 0 20px;
+}
+
+.page-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+h1 {
+  color: var(--green);
+  font: 600 40px "Playfair Display", serif;
+  margin: 8px 0;
+}
+
+.page-heading p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.35fr .85fr;
+  gap: 25px;
+  align-items: start;
+}
+
+.panel {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px;
+  box-shadow: 0 12px 35px #1830260b;
+}
+
+.panel h2 {
+  color: var(--green);
+  font: 600 25px "Playfair Display", serif;
+  margin: 0 0 8px;
+}
+
+.subtext {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 0 0 23px;
+}
+
+.methods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.method {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: .2s;
+  background: white;
+}
+
+.method:hover { border-color: var(--gold); }
+
+.method.selected {
+  border: 2px solid var(--green);
+  background: #f1f6f1;
+}
+
+.method input { display: none; }
+
+.method-icon {
+  font-size: 25px;
+  margin-bottom: 7px;
+}
+
+.method strong {
+  display: block;
+  color: var(--green);
+  font-size: 13px;
+}
+
+.method small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.details {
+  background: #fafbf8;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+  min-height: 180px;
+}
+
+.details h3 {
+  color: var(--green);
+  font: 600 20px "Playfair Display", serif;
+  margin: 0 0 7px;
+}
+
+.details p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.qr-area { text-align: center; }
+
+.qr-area img {
+  width: 190px;
+  max-width: 100%;
+  background: white;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+
+.field { margin: 13px 0; }
+
+.field label {
+  display: block;
+  color: #425047;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.field input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font: 14px "DM Sans", sans-serif;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: var(--green);
+}
+
+.card-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.primary-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 4px;
+  background: var(--green);
+  color: white;
+  font: 700 13px "DM Sans", sans-serif;
+  cursor: pointer;
+  margin-top: 18px;
+}
+
+.primary-btn:hover { background: var(--green-dark); }
+
+.primary-btn:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.summary {
+  background: var(--green);
+  color: white;
+  border-radius: 7px;
+  padding: 25px;
+}
+
+.summary h2 {
+  font: 600 24px "Playfair Display", serif;
+  margin: 0 0 20px;
+}
+
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 11px 0;
+  border-bottom: 1px solid #ffffff25;
+  font-size: 12px;
+}
+
+.summary-line span:first-child { color: #cbd8cf; }
+
+.summary-line span:last-child {
+  text-align: right;
+  font-weight: 600;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.total span:first-child {
+  color: #d8e1da;
+  font-size: 13px;
+}
+
+.total strong {
+  color: #e4c994;
+  font-size: 25px;
+}
+
+.secure-note {
+  text-align: center;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 18px;
+  line-height: 1.6;
+}
+
+.status-box {
+  display: none;
+  padding: 18px;
+  border-radius: 6px;
+  margin-top: 18px;
+  background: #eaf4eb;
+  color: var(--green);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.status-box.error {
+  background: #fff0ed;
+  color: #963d32;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 22px;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+footer {
+  background: var(--green-dark);
+  color: #dbe4dd;
+  text-align: center;
+  padding: 25px;
+  font-size: 12px;
+  margin-top: 55px;
+}
+
+@media(max-width:750px) {
+  .layout { grid-template-columns: 1fr; }
+  main { margin: 28px auto; }
+  h1 { font-size: 32px; }
+  header { padding: 17px 5%; }
+  .logo { font-size: 18px; }
+}
+
+@media(max-width:420px) {
+  .methods { gap: 6px; }
+  .method { padding: 12px 4px; }
+  .panel { padding: 19px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">WOODLAND <span>DELUXE</span></div>
+  <div class="header-note">Booking Payment</div>
+</header>
+
+<main>
+
+  <div class="page-heading">
+    <div class="eyebrow">COMPLETE YOUR RESERVATION</div>
+    <h1>Choose Your Payment</h1>
+    <p>Select your preferred payment method to continue.</p>
+  </div>
+
+  <div class="layout">
+
+    <section class="panel">
+
+      <h2>Payment Method</h2>
+      <p class="subtext">Choose one of the available options below.</p>
+
+      <div class="methods">
+
+        <label class="method selected" data-method="UPI">
+          <input type="radio" name="paymentMethod" value="UPI" checked>
+          <div class="method-icon">▦</div>
+          <strong>UPI</strong>
+          <small>QR payment</small>
+        </label>
+
+        <label class="method" data-method="Card">
+          <input type="radio" name="paymentMethod" value="Card">
+          <div class="method-icon">💳</div>
+          <strong>Card</strong>
+          <small>Debit / Credit</small>
+        </label>
+
+        <label class="method" data-method="Cash">
+          <input type="radio" name="paymentMethod" value="Cash">
+          <div class="method-icon">₹</div>
+          <strong>Cash</strong>
+          <small>Pay at hotel</small>
+        </label>
+
+      </div>
+
+      <div class="details" id="methodDetails">
+        <div class="qr-area">
+          <h3>Pay using UPI</h3>
+          <p>Scan the QR code below.</p>
+          <div id="qrContainer">Loading QR code...</div>
+        </div>
+      </div>
+
+      <button class="primary-btn" id="continueButton" type="button">
+        Continue with UPI
+      </button>
+
+      <div class="status-box" id="statusBox"></div>
+
+      <a class="back-link" href="/">← Back to hotel website</a>
+
+    </section>
+
+    <aside>
+
+      <div class="summary">
+
+        <h2>Booking Summary</h2>
+
+        <div class="summary-line">
+          <span>Reservation ID</span>
+          <span id="reservationId">Loading...</span>
+        </div>
+
+        <div class="summary-line">
+          <span>Guest Name</span>
+          <span id="guestName">Loading...</span>
+        </div>
+
+        <div class="summary-line">
+          <span>Room</span>
+          <span id="roomName">Loading...</span>
+        </div>
+
+        <div class="summary-line">
+          <span>Check-in</span>
+          <span id="checkIn">-</span>
+        </div>
+
+        <div class="summary-line">
+          <span>Check-out</span>
+          <span id="checkOut">-</span>
+        </div>
+
+        <div class="summary-line">
+          <span>Payment Status</span>
+          <span id="paymentStatus">Pending</span>
+        </div>
+
+        <div class="total">
+          <span>Total Amount</span>
+          <strong id="totalAmount">₹0</strong>
+        </div>
+
+      </div>
+
+      
+
+    </aside>
+
+  </div>
+
+</main>
+
+<footer>
+  <strong>HOTEL WOODLAND DELUXE</strong>
+  <p>Thank you for choosing us. We look forward to welcoming you.</p>
+</footer>
+
+<script>
+
+// GET BOOKING DETAILS FROM URL
+
+const params = new URLSearchParams(window.location.search);
+const reservationId = params.get("reservationId");
+const email = params.get("email");
+
+let bookingData = null;
+let selectedMethod = "UPI";
+let busy = false;
+
+const $ = id => document.getElementById(id);
+
+// API FUNCTION
+
+async function api(url, options = {}) {
+
+  const response = await fetch(url, {
+    ...options,
+    headers: {
+      "Content-Type": "application/json",
+      ...(options.headers || {})
+    }
+  });
+
+  const data = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(data.message || "Something went wrong.");
+  }
+
+  return data;
+}
+
+// FORMAT AMOUNT
+
+function money(value) {
+
+  return new Intl.NumberFormat("en-IN", {
+    style: "currency",
+    currency: "INR",
+    maximumFractionDigits: 0
+  }).format(Number(value || 0));
+
+}
+
+// SHOW STATUS MESSAGE
+
+function showStatus(text, isError = false) {
+
+  const box = $("statusBox");
+
+  box.textContent = text;
+
+  box.className = isError
+    ? "status-box error"
+    : "status-box";
+
+  box.style.display = "block";
+
+}
+
+// LOAD BOOKING DETAILS
+
+async function loadBooking() {
+
+  if (!reservationId || !email) {
+
+    showStatus(
+      "Booking details are missing. Please return to the hotel website and book again.",
+      true
+    );
+
+    $("continueButton").disabled = true;
+    return;
+  }
+
+  try {
+
+    bookingData = await api(
+      `/api/payment-details/${encodeURIComponent(reservationId)}?email=${encodeURIComponent(email)}`
+    );
+
+    $("reservationId").textContent = bookingData.reservation_id;
+    $("guestName").textContent = bookingData.full_name;
+
+    $("roomName").textContent =
+      bookingData.room_type + " (Room " + bookingData.room_number + ")";
+
+    $("checkIn").textContent = bookingData.check_in;
+    $("checkOut").textContent = bookingData.check_out;
+    $("paymentStatus").textContent = bookingData.payment_status;
+    $("totalAmount").textContent = money(bookingData.amount);
+
+    if (bookingData.payment_status === "Completed") {
+
+      showStatus("This booking already has a completed payment.");
+
+      $("continueButton").disabled = true;
+      $("continueButton").textContent = "Payment Already Completed";
+
+    }
+
+  } catch (error) {
+
+    showStatus(error.message, true);
+    $("continueButton").disabled = true;
+
+  }
+
+}
+
+// LOAD QR CODE
+
+async function loadQR() {
+
+  try {
+
+    const result = await api("/api/demo-qr");
+
+    const image = document.createElement("img");
+    image.src = result.qrDataUrl;
+    image.alt = "UPI QR code";
+
+    $("qrContainer").replaceChildren(image);
+
+  } catch (error) {
+
+    $("qrContainer").textContent =
+      "Could not load the QR code.";
+
+  }
+
+}
+
+// CHANGE PAYMENT METHOD
+
+function renderMethod() {
+
+  document.querySelectorAll(".method").forEach(card => {
+
+    card.classList.toggle(
+      "selected",
+      card.dataset.method === selectedMethod
+    );
+
+    card.querySelector("input").checked =
+      card.dataset.method === selectedMethod;
+
+  });
+
+  const details = $("methodDetails");
+  const button = $("continueButton");
+
+  $("statusBox").style.display = "none";
+
+  if (selectedMethod === "UPI") {
+
+    details.innerHTML = `
+      <div class="qr-area">
+        <h3>Pay using UPI</h3>
+        <p>Scan the QR code below.</p>
+        <div id="qrContainer">Loading QR code...</div>
+      </div>
+    `;
+
+    button.textContent = "Continue with UPI";
+    loadQR();
+
+  }
+
+  else if (selectedMethod === "Card") {
+
+    details.innerHTML = `
+      <h3>Card Payment</h3>
+
+      <p>Enter card details to continue.</p>
+
+      <div class="field">
+        <label>Cardholder Name</label>
+        <input id="cardName" type="text" placeholder="Name on card">
+      </div>
+
+      <div class="field">
+        <label>Card Number</label>
+        <input id="cardNumber" type="text"
+          inputmode="numeric"
+          maxlength="19"
+          placeholder="1234 5678 9012 3456">
+      </div>
+
+      <div class="card-row">
+
+        <div class="field">
+          <label>Expiry Date</label>
+          <input id="cardExpiry" type="text"
+            placeholder="MM/YY" maxlength="5">
+        </div>
+
+        <div class="field">
+          <label>CVV</label>
+          <input id="cardCvv" type="password"
+            inputmode="numeric"
+            maxlength="4"
+            placeholder="123">
+        </div>
+
+      </div>
+    `;
+
+    button.textContent = "Continue with Card";
+
+  }
+
+  else if (selectedMethod === "Cash") {
+
+    details.innerHTML = `
+      <h3>Cash Payment</h3>
+
+      <p>You have selected cash payment.</p>
+
+      <p>Your reservation will be recorded with payment status Pending.
+      Please pay the amount at the hotel reception during your visit.</p>
+
+      <span class="demo-label">PAYMENT AT HOTEL</span>
+    `;
+
+    button.textContent = "Confirm Cash Payment";
+
+  }
+
+}
+
+// PAYMENT METHOD SELECTION
+
+document.querySelectorAll(".method").forEach(card => {
+
+  card.addEventListener("click", function() {
+
+    if (busy || (bookingData &&
+        bookingData.payment_status === "Completed")) return;
+
+    selectedMethod = this.dataset.method;
+    renderMethod();
+
+  });
+
+});
+
+// CONTINUE PAYMENT
+
+async function continuePayment() {
+
+  if (busy || !bookingData) return;
+
+  if (bookingData.payment_status === "Completed") {
+    showStatus("Payment has already been completed.");
+    return;
+  }
+
+  // Validate card details before saving the method.
+
+  if (selectedMethod === "Card") {
+
+    const name = $("cardName").value.trim();
+    const number = $("cardNumber").value.replace(/\s/g, "");
+    const expiry = $("cardExpiry").value.trim();
+    const cvv = $("cardCvv").value.trim();
+
+    if (
+      !name ||
+      !/^\d{12,19}$/.test(number) ||
+      !/^\d{2}\/\d{2}$/.test(expiry) ||
+      !/^\d{3,4}$/.test(cvv)
+    ) {
+
+      showStatus("Please enter valid sample card details.", true);
+      return;
+
+    }
+
+  }
+
+  busy = true;
+
+  const button = $("continueButton");
+  button.disabled = true;
+
+  try {
+
+    await api(
+      `/api/payment-method/${encodeURIComponent(reservationId)}`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          email: email,
+          paymentMethod: selectedMethod
+        })
+      }
+    );
+
+    // CASH PAYMENT
+
+    if (selectedMethod === "Cash") {
+
+      $("paymentStatus").textContent = "Pending";
+
+      showStatus(
+        "Cash payment selected successfully. Please pay at the hotel reception."
+      );
+
+      button.textContent = "Cash Payment Selected";
+      return;
+
+    }
+
+    // UPI OR CARD PAYMENT
+
+    const result = await api(
+      `/api/payment-demo/${encodeURIComponent(reservationId)}`,
+      {
+        method: "POST",
+        body: JSON.stringify({
+          email: email
+        })
+      }
+    );
+
+    $("paymentStatus").textContent = "Completed";
+    bookingData.payment_status = "Completed";
+
+    showStatus(result.message || "Payment completed successfully.");
+
+    button.textContent = "Payment Completed";
+
+  }
+
+  catch (error) {
+
+    showStatus(error.message, true);
+    button.disabled = false;
+
+  }
+
+  finally {
+
+    busy = false;
+
+  }
+
+}
+
+// BUTTON EVENT
+
+$("continueButton").addEventListener(
+  "click",
+  continuePayment
+);
+
+// START PAGE
+
+loadBooking().then(() => {
+
+  if (!bookingData ||
+      bookingData.payment_status !== "Completed") {
+
+    renderMethod();
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>

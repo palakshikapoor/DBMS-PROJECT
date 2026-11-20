@@ -1,0 +1,757 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Woodland Deluxe | New Delhi</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f7faf7;
+    color: #263b30;
+}
+
+header {
+    background: #174b35;
+    color: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #c4dfc9;
+}
+
+.hero {
+    min-height: 470px;
+    background: linear-gradient(rgba(13,48,32,.65), rgba(13,48,32,.65)),
+    url("https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1600")
+    center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 40px 20px;
+}
+
+.hero h1 {
+    font-size: 46px;
+    margin-bottom: 18px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    display: inline-block;
+    background: #b6d5b9;
+    color: #174b35;
+    padding: 13px 25px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #d1e6d3;
+}
+
+section {
+    padding: 65px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    color: #174b35;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #66756b;
+}
+
+.rooms {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+    gap: 25px;
+}
+
+.room-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,.08);
+}
+
+.room-card img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+.room-info {
+    padding: 20px;
+}
+
+.room-info h3 {
+    color: #174b35;
+    margin-bottom: 10px;
+}
+
+.room-info p {
+    margin: 8px 0;
+    color: #657269;
+}
+
+.price {
+    color: #174b35;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.services, .map-section {
+    background: #eaf2eb;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(190px,1fr));
+    gap: 20px;
+}
+
+.service-card {
+    background: white;
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 9px;
+}
+
+.service-card .symbol {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    color: #174b35;
+    margin-bottom: 10px;
+}
+
+.booking {
+    background: white;
+}
+
+.booking-form {
+    max-width: 750px;
+    margin: auto;
+    background: #f3f7f3;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #174b35;
+}
+
+.form-group input, .form-group select {
+    padding: 12px;
+    border: 1px solid #ccd8ce;
+    border-radius: 5px;
+    width: 100%;
+    background: white;
+}
+
+.full-width {
+    grid-column: 1/-1;
+}
+
+.booking-form button {
+    width: 100%;
+    margin-top: 22px;
+}
+
+.message {
+    margin-top: 18px;
+    padding: 12px;
+    border-radius: 5px;
+    display: none;
+    background: #e1eee3;
+    color: #174b35;
+}
+
+.map-section iframe {
+    width: 100%;
+    height: 380px;
+    border: 0;
+    border-radius: 10px;
+}
+
+.hotel-address {
+    text-align: center;
+    margin-bottom: 25px;
+    line-height: 1.8;
+}
+
+.hotel-address h3 {
+    color: #174b35;
+    margin-bottom: 8px;
+}
+
+.map-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: #174b35;
+    font-weight: bold;
+}
+
+footer {
+    background: #174b35;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+footer a {
+    color: white;
+    margin: 10px;
+}
+
+@media(max-width:650px) {
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        text-align: center;
+    }
+
+    nav a {
+        margin: 7px;
+        display: inline-block;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">HOTEL WOODLAND DELUXE</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#rooms">Rooms</a>
+        <a href="#services">Services</a>
+        <a href="#booking">Book Now</a>
+        <a href="#location">Location</a>
+        <a href="/admin-login">Admin</a>
+    </nav>
+</header>
+
+<!-- HOME -->
+
+<div class="hero" id="home">
+    <div>
+        <h1>Welcome to Hotel Woodland Deluxe</h1>
+        <p>Comfort, Convenience and a Memorable Stay</p>
+        <a href="#booking" class="btn">Book Your Stay</a>
+    </div>
+</div>
+
+<!-- ROOMS -->
+
+<section id="rooms">
+
+    <div class="section-title">
+        <h2>Our Rooms</h2>
+        <p>Choose a comfortable room for your stay</p>
+    </div>
+
+    <div class="rooms" id="roomList">
+        <p>Loading rooms...</p>
+    </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="services" id="services">
+
+    <div class="section-title">
+        <h2>Our Services</h2>
+        <p>Making your stay comfortable and convenient</p>
+    </div>
+
+    <div class="service-grid" id="serviceList">
+        <p>Loading services...</p>
+    </div>
+
+</section>
+
+<!-- BOOKING -->
+
+<section class="booking" id="booking">
+
+    <div class="section-title">
+        <h2>Book Your Stay</h2>
+        <p>Enter your details to check room availability</p>
+    </div>
+
+    <form class="booking-form" id="bookingForm">
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="guests">Number of Guests</label>
+                <input type="number" id="guests" min="1" value="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="checkIn">Check-in Date</label>
+                <input type="date" id="checkIn" required>
+            </div>
+
+            <div class="form-group">
+                <label for="checkOut">Check-out Date</label>
+                <input type="date" id="checkOut" required>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="roomId">Select Room</label>
+                <select id="roomId" required>
+                    <option value="">Select a room</option>
+                </select>
+            </div>
+
+        </div>
+
+        <button type="button" class="btn" id="checkButton">
+            Check Availability
+        </button>
+
+        <button type="submit" class="btn" id="bookingSubmit">
+            Confirm Booking
+        </button>
+
+        <div class="message" id="bookingMessage" role="status"></div>
+
+    </form>
+
+</section>
+
+<!-- HOTEL LOCATION -->
+
+<section class="map-section" id="location">
+
+    <div class="section-title">
+        <h2>Find Our Hotel</h2>
+        <p>Visit Hotel Woodland Deluxe in New Delhi</p>
+    </div>
+
+    <div class="hotel-address">
+
+        <h3>Hotel Woodland Deluxe</h3>
+
+        <p>
+            8235/6, Multani Dhanda, Arakashan Road,
+            Paharganj, New Delhi, Delhi - 110055, India
+        </p>
+
+        <a class="map-link"
+           href="https://www.google.com/maps/search/?api=1&query=Hotel+Woodland+Deluxe%2C+8235%2F6%2C+Multani+Dhanda%2C+Arakashan+Road%2C+Paharganj%2C+New+Delhi"
+           target="_blank"
+           rel="noopener">
+            Get Directions on Google Maps
+        </a>
+
+    </div>
+
+    <iframe
+        src="https://maps.google.com/maps?q=Hotel%20Woodland%20Deluxe%2C%208235%2F6%2C%20Multani%20Dhanda%2C%20Arakashan%20Road%2C%20Paharganj%2C%20New%20Delhi%20110055&t=&z=17&ie=UTF8&iwloc=&output=embed"
+        loading="lazy"
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Hotel Woodland Deluxe location map">
+    </iframe>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+    <h2>HOTEL WOODLAND DELUXE</h2>
+    <p>Thank you for choosing us.</p>
+    <p>8235/6, Multani Dhanda, Paharganj, New Delhi - 110055</p>
+    <p>Hotel Management System | Academic Project</p>
+    <br>
+    <a href="#home">Back to Top</a>
+</footer>
+
+<script>
+
+// ==========================================
+// SET MINIMUM BOOKING DATE
+// ==========================================
+
+const today = new Date();
+
+const todayString =
+    `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,"0")}-${String(today.getDate()).padStart(2,"0")}`;
+
+document.getElementById("checkIn").min = todayString;
+document.getElementById("checkOut").min = todayString;
+
+document.getElementById("checkIn").addEventListener("change", function() {
+    document.getElementById("checkOut").min = this.value;
+});
+
+// ==========================================
+// LOAD ROOMS FROM DATABASE
+// ==========================================
+
+async function loadRooms() {
+    try {
+        const response = await fetch("/api/rooms");
+
+        if (!response.ok) {
+            throw new Error("Could not load rooms");
+        }
+
+        const rooms = await response.json();
+
+        const roomList = document.getElementById("roomList");
+        const roomSelect = document.getElementById("roomId");
+
+        roomList.innerHTML = "";
+        roomSelect.innerHTML = '<option value="">Select a room</option>';
+
+        const availableRooms = rooms.filter(
+            room => room.Status === "Available"
+        );
+
+        if (availableRooms.length === 0) {
+            roomList.innerHTML =
+                "<p>No rooms are currently listed as available.</p>";
+        }
+
+        availableRooms.forEach(room => {
+
+            const card = document.createElement("div");
+            card.className = "room-card";
+
+            const image = document.createElement("img");
+            image.src =
+                "https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=700";
+            image.alt = room.RoomType;
+
+            const info = document.createElement("div");
+            info.className = "room-info";
+
+            const heading = document.createElement("h3");
+            heading.textContent = room.RoomType;
+
+            const number = document.createElement("p");
+            number.textContent = "Room Number: " + room.RoomNumber;
+
+            const capacity = document.createElement("p");
+            capacity.textContent =
+                "Capacity: " + room.Capacity + " guests";
+
+            const price = document.createElement("p");
+            price.className = "price";
+            price.textContent =
+                "₹" + room.PricePerNight + " / night";
+
+            info.append(heading, number, capacity, price);
+            card.append(image, info);
+            roomList.appendChild(card);
+
+            const option = document.createElement("option");
+            option.value = room.RoomID;
+            option.textContent =
+                room.RoomType + " - Room " + room.RoomNumber;
+
+            roomSelect.appendChild(option);
+        });
+
+    } catch (error) {
+        document.getElementById("roomList").textContent =
+            "Unable to load rooms. Please check the server and database.";
+    }
+}
+
+// ==========================================
+// LOAD SERVICES FROM DATABASE
+// ==========================================
+
+async function loadServices() {
+    try {
+        const response = await fetch("/api/services");
+
+        if (!response.ok) {
+            throw new Error("Could not load services");
+        }
+
+        const services = await response.json();
+
+        const serviceList = document.getElementById("serviceList");
+        serviceList.innerHTML = "";
+
+        if (services.length === 0) {
+            serviceList.innerHTML = "<p>No services added yet.</p>";
+        }
+
+        services.forEach(service => {
+
+            const card = document.createElement("div");
+            card.className = "service-card";
+
+            const symbol = document.createElement("div");
+            symbol.className = "symbol";
+            symbol.textContent = "✦";
+
+            const heading = document.createElement("h3");
+            heading.textContent = service.ServiceName;
+
+            const description = document.createElement("p");
+            description.textContent = service.Description || "";
+
+            const price = document.createElement("p");
+            price.textContent = "₹" + service.Price;
+
+            card.append(symbol, heading, description, price);
+            serviceList.appendChild(card);
+        });
+
+    } catch (error) {
+        document.getElementById("serviceList").textContent =
+            "Unable to load services.";
+    }
+}
+
+// ==========================================
+// CHECK ROOM AVAILABILITY
+// ==========================================
+
+document.getElementById("checkButton").addEventListener("click", async function() {
+
+    const checkIn = document.getElementById("checkIn").value;
+    const checkOut = document.getElementById("checkOut").value;
+    const guests = document.getElementById("guests").value;
+
+    if (!checkIn || !checkOut || !guests) {
+        showMessage("Please enter check-in, check-out and guests.");
+        return;
+    }
+
+    if (checkOut <= checkIn) {
+        showMessage("Check-out must be after check-in.");
+        return;
+    }
+
+    try {
+        const params = new URLSearchParams({
+            checkIn,
+            checkOut,
+            guests
+        });
+
+        const response = await fetch(
+            "/api/rooms/available?" + params.toString()
+        );
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            showMessage(result.message || "Could not check availability.");
+            return;
+        }
+
+        const select = document.getElementById("roomId");
+
+        select.innerHTML =
+            '<option value="">Select an available room</option>';
+
+        result.forEach(room => {
+
+            const option = document.createElement("option");
+
+            option.value = room.room_id;
+
+            option.textContent =
+                room.room_type + " - Room " + room.room_number +
+                " (₹" + room.price_per_night + "/night)";
+
+            select.appendChild(option);
+        });
+
+        if (result.length === 0) {
+            showMessage(
+                "Sorry, no rooms are available for these dates."
+            );
+        } else {
+            showMessage(
+                result.length +
+                " available room(s) found. Select one to continue."
+            );
+        }
+
+    } catch (error) {
+        showMessage("Could not check availability. Please try again.");
+    }
+});
+
+// ==========================================
+// CREATE BOOKING AND REDIRECT TO PAYMENT
+// ==========================================
+
+document.getElementById("bookingForm").addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const submitButton = document.getElementById("bookingSubmit");
+
+    const booking = {
+        fullName: document.getElementById("fullName").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        phone: document.getElementById("phone").value.trim(),
+        guests: document.getElementById("guests").value,
+        checkIn: document.getElementById("checkIn").value,
+        checkOut: document.getElementById("checkOut").value,
+        roomId: document.getElementById("roomId").value
+    };
+
+    if (!booking.roomId) {
+        showMessage("Please select a room first.");
+        return;
+    }
+
+    if (booking.checkOut <= booking.checkIn) {
+        showMessage("Check-out must be after check-in.");
+        return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = "Processing Booking...";
+
+    try {
+        const response = await fetch("/api/reservations", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(booking)
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            showMessage(result.message || "Booking failed.");
+            submitButton.disabled = false;
+            submitButton.textContent = "Confirm Booking";
+            return;
+        }
+
+        showMessage("Booking successful! Redirecting to payment...");
+
+        window.location.href =
+            `/payment.html?reservationId=${result.reservationId}&email=${encodeURIComponent(booking.email)}`;
+
+    } catch (error) {
+        showMessage("Server error. Please try again.");
+
+        submitButton.disabled = false;
+        submitButton.textContent = "Confirm Booking";
+    }
+});
+
+// ==========================================
+// DISPLAY MESSAGES
+// ==========================================
+
+function showMessage(message) {
+    const box = document.getElementById("bookingMessage");
+    box.textContent = message;
+    box.style.display = "block";
+}
+
+// ==========================================
+// INITIALIZE WEBSITE
+// ==========================================
+
+loadRooms();
+loadServices();
+
+</script>
+
+</body>
+</html>

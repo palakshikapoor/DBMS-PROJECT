@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login | Haven Hotel</title>
+  <link rel="stylesheet" href="admin-login.css">
+</head>
+<body>
+  <main class="login-card">
+    <a class="logo" href="/">HAVEN<span>.</span></a>
+    <p class="eyebrow">STAFF ACCESS</p>
+    <h1>Admin Login</h1>
+    <p class="muted">Sign in to manage hotel operations.</p>
+    <form id="loginForm">
+      <label for="username">Username</label>
+      <input id="username" required autocomplete="username" placeholder="Admin username">
+      <label for="password">Password</label>
+      <input id="password" type="password" required autocomplete="current-password" placeholder="Password">
+      <button type="submit">Login to dashboard</button>
+      <p id="loginMessage" aria-live="polite"></p>
+    </form>
+    <a class="back" href="/">← Back to customer website</a>
+  </main>
+  <script src="admin-login.js"></script>
+</body>
+</html>
