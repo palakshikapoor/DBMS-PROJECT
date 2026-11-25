@@ -50,11 +50,6 @@ If you already have the five tables, do not drop them. Check that their column n
 
 ## Step 3: Create your .env file
 
-1. Copy `.env.example`.
-2. Rename the copy to `.env`.
-3. Put your MySQL password after `DB_PASSWORD=`.
-4. Set an admin username and password of your choice.
-
 Example:
 
 ```env
@@ -135,10 +130,6 @@ Then run `npm start` again.
 - Check that the server terminal has no SQL errors.
 - Confirm that sample rows exist in `rooms` and `services`.
 - Open `http://localhost:3000/api/health` to check that the server is responding.
-
-## Suggested viva explanation
-
-"Haven Hotel is a web-based hotel management system developed using HTML, CSS, JavaScript, Node.js, Express and MySQL. It has a public customer website and a separate protected admin dashboard. Customers can view rooms, check date-wise availability, create reservations, view their booking and use a simulated payment flow. The admin can manage rooms, services, reservations and payment statuses. MySQL stores the records, and Express exposes REST APIs. The booking operation uses a database transaction and checks overlapping reservations to reduce the chance of double booking."
 
 ## Project structure
 
