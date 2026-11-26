@@ -1,4 +1,5 @@
-# Haven Hotel Management System
+# Hotel Management System
+DEPLOYED LINK: https://dbms-project-zif8.onrender.com/
 
 A beginner-friendly academic project using HTML, CSS, JavaScript, Node.js, Express and MySQL.
 
